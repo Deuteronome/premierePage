@@ -1,0 +1,42 @@
+* {
+    font-size: 12px;
+}
+
+h3, h4 {
+    color:#94c798;    
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+
+
+body {
+    background-color: #119ada;
+}
+/*   kijijoj */
+#chapeau {
+    width:20%;
+}
+
+#coordonnees {
+   width : 50vw;
+   background-color: #0000ff;
+   margin : 20px;
+   border : black 3px solid;
+   padding: 10px;
+   border-radius : 30px;
+   box-shadow: 5px 5px 10px 0px;
+   transition : transform 2s;
+}
+
+#coordonnees:hover {
+    background-color: brown;
+    transform : translate3d(5px, 5px, 0);
+    transition : transform 0.5s;
+}
