@@ -3,7 +3,7 @@ main {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    background-color: #bbaf9a44;
+    background-color:#e6e6e6;
     padding-top: 5vh;
 }
 
@@ -12,7 +12,7 @@ article {
     background-color: #f5f5f5;
     box-shadow: #000000 5px 5px 10px 0;
     padding: 20px;
-    margin-bottom: 2.5vh;
+    margin: 2.5vh 0;
 
 }
 
@@ -20,16 +20,19 @@ article>h2 {
     color: #f0a00c;
     font-size: 2em;
     margin-bottom: 1.5vh;
+    font-family: "caviar gras";
 }
 
 article>h3 {
     color: #f0a00c;
     font-size: 1.5em;
     margin-bottom: 1.5vh;
+    font-family: "caviar gras";
 }
 
-article>p, article>li{
-    font-size: 1.2em;
+article>p, article>ul{
+    font-size: 1.4em;
+    line-height: 1.6em ;
 }
 
 article>ul {
@@ -37,6 +40,40 @@ article>ul {
 }
 
 .espace {
-    height: 40vh;
+    /*l'image de fond glissante*/
+    height: 55vh;
+    width : 100%;
+    background-image: url("../assets/GroupePN3.jpg");
+    background-repeat: no-repeat;
+    background-size: 80vw;
+    background-attachment: fixed;
+    background-position-y: 40vh;
+    background-position-x: 20vw;
+
+    /*le texte*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    color : #e6e6e6;
+    padding-right: 5vw;
+}
+
+.espace>h2 {
+    font-size: 4em;;
+}
+
+.espace>h3 {
+    font-size: 3.5em;;
+}
+
+#last {
+    margin-bottom : 15vh;
+}
+
+iframe {
+    width : 80%;
+    aspect-ratio: 16/9;
+    margin-left: 10%;
 }
 
