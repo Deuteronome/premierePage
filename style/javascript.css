@@ -1,0 +1,27 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.game-container {
+    width: 80%;
+    background-color: #aba2a2;
+    box-shadow: #000000 5px 5px 10px 0;
+    margin : 3vmin 0;
+    padding: 2vmin;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+#gameMenu>select {
+    font-size: 1.4em;
+    padding : 5px;
+    background-color: #000000;
+    color : #f5f5f5;
+    border : whitesmoke solid 2px;
+    border-radius: 5px;
+}
+
