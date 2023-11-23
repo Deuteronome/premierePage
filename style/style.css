@@ -59,6 +59,7 @@ nav {
     /*taille et apparence de base du nav (menu)*/
     height: 75vh;
     width : 20vw;
+    left : -20vw;
     background-color: #000000;
     color: #f5f5f5;
     /*optionnel*/
@@ -70,6 +71,7 @@ nav {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    transition : transform 1000ms;
 }
 
 .bouton {
@@ -97,10 +99,8 @@ main {
     /*positonnement sur la page*/
     position: relative;
     top : 25vh;
-    left : 20vw;
-
-
-    width : 80vw;
+    width : 100vw;
+    transition : width 1s, left 1s;
 }
 
 footer {
