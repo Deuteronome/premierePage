@@ -54,8 +54,7 @@ function fairNumber() {
     zone.appendChild(submitButton)
 
     /*le fonctionnement du jeu*/
-    function compareNumber() {
-       
+    function compareNumber() {       
         
         count++
 
