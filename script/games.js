@@ -32,8 +32,13 @@ function fairNumber() {
     let randomTarget = Math.floor(Math.random() * 100) +1
     console.log(randomTarget)
     let count = 0
+    let isOver = false
     let userNumber = null
     let message = ""
+
+    let inputLine = document.createElement('div')
+    inputLine.classList.add('inputLine')
+    zone.appendChild(inputLine)
 
     /*on ajoute des élèments html*/
     let playerInput = document.createElement("input")
@@ -49,10 +54,12 @@ function fairNumber() {
     submitButton.innerHTML ="Valider"
     submitButton.addEventListener('click', compareNumber)
 
-    zone.appendChild(inputLabel)
-    zone.appendChild(playerInput)
-    zone.appendChild(submitButton)
+    inputLine.appendChild(inputLabel)
+    inputLine.appendChild(playerInput)
+    inputLine.appendChild(submitButton)
 
+    let messageZone = document.createElement('div')
+    zone.appendChild(messageZone)
     /*le fonctionnement du jeu*/
     function compareNumber() {       
         
@@ -69,11 +76,22 @@ function fairNumber() {
             message += "C'est trop petit"
         } else {
             message += `bravo vous avez trouvé`
+            isOver = true
         }
 
         let newMessage = document.createElement('p')
+        newMessage.classList.add("fairLine")
         newMessage.innerHTML = message
-        zone.appendChild(newMessage)
+        messageZone.appendChild(newMessage)
+
+        if(isOver) {
+            zone.removeChild(inputLine)
+            let resetButton = document.createElement('button')
+            resetButton.innerHTML ="Recommencer"
+            resetButton.addEventListener('click', fairNumber)
+
+            zone.appendChild(resetButton)
+        }
         
     }
 
