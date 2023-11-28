@@ -104,6 +104,11 @@ function ticTacDoe() {
     reset()
     console.log('jeu du morpion')
 
+    /*déclaration des variable*/
+
+    let squares = []
+
+    /*mise en page de la zone*/
     let infoPanel = document.createElement('div')
     infoPanel.classList.add('infoPanel')
 
@@ -113,6 +118,18 @@ function ticTacDoe() {
     zone.appendChild(infoPanel)
     zone.appendChild(grid)
     zone.classList.add('ttdZone')
+
+    /*création de la grille*/
+
+    for(let i=0; i<9; i++) {
+        let square = document.createElement('div')
+        square.classList.add('square')
+        grid.appendChild(square)
+        squares.push(square)
+    }
+
+    console.log(squares)
+
 }
 /*on configure les évènements*/
 
