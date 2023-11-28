@@ -128,7 +128,15 @@ function ticTacDoe() {
         squares.push(square)
     }
 
+    for(let i=0; i<9; i++) {
+        squares[i].addEventListener('click', squareClick.bind(squares[i]))
+    }
+
     console.log(squares)
+
+    function squareClick() {
+        this.style.backgroundImage = 'url("../assets/rouge.png")'
+    }
 
 }
 /*on configure les évènements*/
