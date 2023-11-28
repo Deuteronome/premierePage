@@ -10,6 +10,9 @@ function menuChange() {
         case '1':
             fairNumber()
             break
+        case '2':
+            ticTacDoe()
+            break
         default : 
             reset()
             break
@@ -95,6 +98,21 @@ function fairNumber() {
         
     }
 
+}
+
+function ticTacDoe() {
+    reset()
+    console.log('jeu du morpion')
+
+    let infoPanel = document.createElement('div')
+    infoPanel.classList.add('infoPanel')
+
+    let grid = document.createElement('div')
+    grid.classList.add('grid')
+
+    zone.appendChild(infoPanel)
+    zone.appendChild(grid)
+    zone.classList.add('ttdZone')
 }
 /*on configure les évènements*/
 

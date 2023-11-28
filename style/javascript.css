@@ -25,3 +25,24 @@ main {
     border-radius: 5px;
 }
 
+/*mise en forme du tic tac doe */
+
+.ttdZone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    
+}
+
+.infoPanel {
+    width : 30%;
+    background-color: #f5f5f5;
+    box-shadow: black 5px 5px 10px 0;
+}
+
+.grid {
+    width : 60%;
+    aspect-ratio: 1;
+}
+
