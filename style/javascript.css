@@ -62,3 +62,60 @@ main {
  .square:hover {
     background-color: #c8c7c7;
  }
+
+
+ /*jeu de Nim*/
+
+ .nimZone {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 10vh;
+ }
+
+ .nimTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin : 2vh 0;
+ }
+
+ .nimSticks {
+    width : 80%;
+    aspect-ratio: 25/10;
+    background-color: #f5f5f5;
+    box-shadow: #000000 5px 5px 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
+ }
+
+ .stick {
+    width : 3%;
+    background-color: #7d4d2a;
+    border: #000000 solid 2px;
+    margin : 5% 0;
+    border-radius: 15px;
+ }
+
+ .chosen {
+    background-color: #513019;
+    box-shadow: #000000 5px 5px 10px 0;
+ }
+
+ .submitZone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin : 2vh 0;
+ }
+
+ .gameOver {
+    color : #b51d1d;
+    font-size: 2em;
+    text-shadow: black 5px 5px 5px 0;
+ }

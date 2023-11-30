@@ -13,6 +13,9 @@ function menuChange() {
         case '2':
             ticTacDoe()
             break
+        case '3':
+            nimGame()
+            break
         default : 
             reset()
             break
@@ -21,6 +24,7 @@ function menuChange() {
 
 function reset() {
     zone.innerHTML = ""
+    zone.classList.remove("ttdZone")
 }
 
 /**
@@ -102,7 +106,7 @@ function fairNumber() {
 
 function ticTacDoe() {
     reset()
-    console.log('jeu du morpion')
+    
 
     /*déclaration des variable*/
 
@@ -140,5 +144,184 @@ function ticTacDoe() {
 
 }
 /*on configure les évènements*/
+
+function nimGame() {
+    reset()
+    zone.classList.add('nimZone')
+
+    /* variables*/
+
+    let humanTurn = true
+    let randomPlay = 1
+    let startingSticks = 14
+    let remainingStick = startingSticks
+    let chosenSticks = 0
+    let sticks = []
+    let isGameOver = false
+
+    /* mise en page de la zone */
+
+    let titleBar = document.createElement('div')
+    titleBar.classList.add('nimTitle')
+
+    let title = document.createElement('h2')
+    title.innerHTML = "Jeu de Nim"
+    titleBar.appendChild(title)
+    
+    let sticksZone = document.createElement('div')
+    sticksZone.classList.add('nimSticks')
+
+    for(let i = 0; i < startingSticks; i++) {
+        let stick = document.createElement('div')
+        stick.classList.add('stick')
+        sticksZone.appendChild(stick)
+        sticks.push(stick)
+        stick.addEventListener('click', stickChoice.bind(stick))
+    }
+
+    let submitZone = document.createElement('div')
+    submitZone.classList.add('submitZone')
+    let submitButton = document.createElement('button')
+    submitButton.classList.add('bouton')
+    submitButton.innerHTML = "Valider"
+    submitButton.addEventListener('click', submitChoice)
+    submitZone.appendChild(submitButton)
+
+    zone.appendChild(titleBar)
+    zone.appendChild(sticksZone)
+    zone.appendChild(submitZone)
+
+    /*fonctionnement*/
+    function changeTurn() {
+        humanTurn = !humanTurn
+        if(humanTurn) {
+            submitZone.appendChild(submitButton)
+        } else {
+            submitZone.removeChild(submitButton)
+        }
+    }
+
+    function stickChoice() {
+        if(humanTurn && !isGameOver) {
+            if(this.classList.contains('chosen')) {
+                this.classList.remove('chosen')
+                chosenSticks--
+            } else if(chosenSticks < 3) {
+                this.classList.add('chosen')
+                chosenSticks++
+            }
+        }     
+        
+    }
+
+    function submitChoice() {
+        if(chosenSticks!=0) {
+            let stickSelected = document.querySelectorAll('.chosen')
+            stickSelected.forEach((element)=>{sticksZone.removeChild(element)})
+            
+            chosenSticks = 0
+
+            checkVictory()
+            
+            if(!isGameOver) {
+                changeTurn()
+                antagonistTurn()
+            }
+            
+        }        
+    }
+
+    function checkVictory() {
+        remainingStick = document.getElementsByClassName('stick').length
+        console.log(remainingStick)
+        if(remainingStick == 0) {
+            let gameOverMessage = ""
+            if(humanTurn) {
+                gameOverMessage = "Vous avez perdu"
+            } else {
+                gameOverMessage = "Vous avez gagné"
+            }
+
+            let gameOver = document.createElement('div')
+            gameOver.classList.add('gameOver')
+            gameOver.innerHTML=gameOverMessage
+            sticksZone.style.alignItems = "center"
+            sticksZone.appendChild(gameOver)
+            isGameOver = true
+            if(humanTurn) {
+                submitZone.removeChild(submitButton)
+            }
+
+            let restartButton = document.createElement('button')
+            restartButton.classList.add('bouton')
+            restartButton.innerHTML = "Recommencer"
+            restartButton.addEventListener('click', nimGame)
+            submitZone.appendChild(restartButton)
+
+        }
+    }
+
+    function antagonistTurn() {
+        if(remainingStick == 1) {
+            antagonistStickNumber = 1
+        } else if(remainingStick<=4) {
+            antagonistStickNumber = remainingStick -1
+        } else if(randomPlay>0 ||  remainingStick%4 == 1) {
+            antagonistStickNumber = Math.floor(Math.random()*3)+1
+            randomPlay --
+        } else if(remainingStick%4 == 0) {
+            antagonistStickNumber = 3
+        } else {
+            antagonistStickNumber = remainingStick%4 -1
+        }
+
+        
+
+        let activeSticks = document.querySelectorAll('.stick')
+        let step =0
+
+        function antagonistSubmit() {
+            let stickSelected = document.querySelectorAll('.chosen')
+            stickSelected.forEach((element)=>{sticksZone.removeChild(element)})
+
+            checkVictory()
+            if(!isGameOver) {
+                changeTurn()
+            }
+        }
+
+        function antagonistChoice() {
+            activeSticks[step].classList.add('chosen')
+            antagonistStickNumber--
+            step++
+        }
+
+        setTimeout(()=>{
+            antagonistChoice()
+            setTimeout(()=>{
+                if(antagonistStickNumber>0) {
+                    antagonistChoice()
+                    setTimeout(()=>{
+                        if(antagonistStickNumber>0) {
+                            antagonistChoice()
+                            setTimeout(()=>{
+                                antagonistSubmit()
+                            }
+                            ,1000)
+                        } else {
+                            antagonistSubmit()
+                        }
+                    }
+                    ,1000)
+                } else {
+                    antagonistSubmit()
+                }
+            }
+            ,1000)
+        },2000)
+        
+        
+    }
+ }
 
 menu.addEventListener("change", menuChange)
